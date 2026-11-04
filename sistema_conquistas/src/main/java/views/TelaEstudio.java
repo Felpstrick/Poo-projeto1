@@ -4,6 +4,8 @@
  */
 package views;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.bean.Estudio;
 import model.dao.EstudioDAO;
 
@@ -12,12 +14,15 @@ import model.dao.EstudioDAO;
  * @author Aluno
  */
 public class TelaEstudio extends javax.swing.JInternalFrame {
-
+    
+    private Estudio meuEstudio;
     /**
      * Creates new form TelaEstudio
      */
     public TelaEstudio() {
         initComponents();
+        preencherTabela();
+        limpar();
     }
     
     //método para limpar a tela
@@ -25,6 +30,27 @@ public class TelaEstudio extends javax.swing.JInternalFrame {
         txtNome.setText("");
         txtPais.setText("");
         txtAnoFundacao.setText("");
+        
+        tblCadastrados.clearSelection();
+        
+        btnSalvar.setEnabled(true);
+        btnEditar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+    }
+    
+    public void preencherTabela(){
+        DefaultTableModel dtm = (DefaultTableModel) tblCadastrados.getModel();
+        dtm.setRowCount(0);
+        EstudioDAO dao = new EstudioDAO();
+        
+        for(Estudio e : dao.read()){
+            dtm.addRow(new Object[]{
+                e.getId(),
+                e.getNome(),
+                e.getPais(),
+                e.getAnoFundacao()
+            });
+        }
     }
     
 
@@ -65,8 +91,18 @@ public class TelaEstudio extends javax.swing.JInternalFrame {
         jLabel3.setText("Ano de Fundação");
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,9 +180,15 @@ public class TelaEstudio extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nome", "País", "Ano"
             }
         ));
+        tblCadastrados.setName(""); // NOI18N
+        tblCadastrados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCadastradosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCadastrados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,13 +232,63 @@ public class TelaEstudio extends javax.swing.JInternalFrame {
         dao.create(meuEstudio);
         
         limpar();
+        preencherTabela();
         
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
         limpar();
+        preencherTabela();
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void tblCadastradosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCadastradosMouseClicked
+        // TODO add your handling code here:
+        int linha = tblCadastrados.getSelectedRow();
+        
+        if(linha != 1) {
+            String id = tblCadastrados.getValueAt(linha, 0).toString();
+            
+            EstudioDAO dao = new EstudioDAO();
+            meuEstudio = dao.read(Integer.parseInt(id));
+            
+            txtNome.setText(meuEstudio.getNome());
+            txtPais.setText(meuEstudio.getPais());
+            txtAnoFundacao.setText(String.valueOf(meuEstudio.getAnoFundacao()));
+            
+            btnSalvar.setEnabled(false);
+            btnEditar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+        }
+    }//GEN-LAST:event_tblCadastradosMouseClicked
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        //Atualizar as informações do objeto meuCliente
+        meuEstudio.setNome(txtNome.getText());
+        meuEstudio.setPais(txtPais.getText());
+        meuEstudio.setAnoFundacao(Integer.parseInt(txtAnoFundacao.getText()));
+        
+        EstudioDAO dao = new EstudioDAO();
+        dao.update(meuEstudio);
+        
+        limpar();
+        preencherTabela();
+                
+        
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        int opcao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir?");
+        
+        if(opcao == JOptionPane.YES_OPTION) {
+            EstudioDAO dao = new EstudioDAO();
+            dao.destroy(meuEstudio);
+            
+            limpar();
+            preencherTabela();
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
