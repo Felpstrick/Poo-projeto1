@@ -67,9 +67,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuGerenciar.add(menuGerenciarEstudio);
 
         menuGerenciarDistribuidora.setText("Distribuidora");
+        menuGerenciarDistribuidora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGerenciarDistribuidoraActionPerformed(evt);
+            }
+        });
         menuGerenciar.add(menuGerenciarDistribuidora);
 
         menuGerenciarUsuario.setText("Usuário");
+        menuGerenciarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuGerenciarUsuarioActionPerformed(evt);
+            }
+        });
         menuGerenciar.add(menuGerenciarUsuario);
 
         jMenuBar1.add(menuGerenciar);
@@ -96,6 +106,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
         painelPrincipal.add(tela);
     }//GEN-LAST:event_menuGerenciarEstudioActionPerformed
+
+    private void menuGerenciarDistribuidoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciarDistribuidoraActionPerformed
+        // TODO add your handling code here:
+        TelaDistribuidora tela = new TelaDistribuidora();
+        tela.setVisible(true);
+        painelPrincipal.add(tela);
+    }//GEN-LAST:event_menuGerenciarDistribuidoraActionPerformed
+
+    private void menuGerenciarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuGerenciarUsuarioActionPerformed
+        // TODO add your handling code here:
+        TelaUsuario tela = new TelaUsuario();
+        tela.setVisible(true);
+        painelPrincipal.add(tela);
+    }//GEN-LAST:event_menuGerenciarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

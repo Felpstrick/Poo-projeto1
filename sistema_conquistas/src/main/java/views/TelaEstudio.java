@@ -246,7 +246,7 @@ public class TelaEstudio extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         int linha = tblCadastrados.getSelectedRow();
         
-        if(linha != 1) {
+        if(linha != -1) {
             String id = tblCadastrados.getValueAt(linha, 0).toString();
             
             EstudioDAO dao = new EstudioDAO();

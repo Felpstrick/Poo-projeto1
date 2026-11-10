@@ -14,7 +14,6 @@ public class Usuario {
     private int id;
     private String nickname;
     private String email;
-    private Date dataCadastro;
 
     
     //Getters e Setters
@@ -41,15 +40,6 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Date getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-    
-    
+   
     
 }
