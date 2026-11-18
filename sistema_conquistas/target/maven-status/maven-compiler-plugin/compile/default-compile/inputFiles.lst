@@ -1,11 +1,14 @@
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\conexao\Conexao.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\bean\Distribuidora.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\bean\Estudio.java
+C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\bean\Jogo.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\bean\Usuario.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\dao\DistribuidoraDAO.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\dao\EstudioDAO.java
+C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\dao\JogoDAO.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\model\dao\UsuarioDAO.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\views\TelaDistribuidora.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\views\TelaEstudio.java
+C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\views\TelaJogo.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\views\TelaPrincipal.java
 C:\Users\Aluno\OneDrive\Documentos\NetBeansProjects\sistema_conquistas\src\main\java\views\TelaUsuario.java

@@ -48,6 +48,9 @@ public class Estudio {
         this.anoFundacao = anoFundacao;
     }
     
-    
+    @Override
+    public String toString(){
+        return nome;
+    }
     
 }

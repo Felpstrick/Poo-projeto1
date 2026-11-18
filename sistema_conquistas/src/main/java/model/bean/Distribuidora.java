@@ -48,7 +48,10 @@ public class Distribuidora {
         this.site = site;
     }
     
-    
+    @Override
+    public String toString(){
+        return nome;
+    }
     
     
 }
